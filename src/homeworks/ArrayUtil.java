@@ -100,7 +100,7 @@ public class ArrayUtil {
                 max = numbers[i];
             }
         }
-        System.out.println("Maximum number: " + min);
+        System.out.println("Maximum number: " + max);
 
         System.out.println();
         System.out.println("_______________ Bonus-2 _______________");
