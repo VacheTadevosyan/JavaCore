@@ -92,7 +92,7 @@ public class ArrayHomework {
         int[] numbers5 = {4, 9, 2, 15, 7, 15, 3, 11, 6, 8};
 
         int max = 0;
-        int secondMax = 0;
+        int secondMax = Integer.MIN_VALUE;
 
         for (int num : numbers5) {
             if (num > max) {
@@ -141,7 +141,7 @@ public class ArrayHomework {
                 }
             }
 
-            if (count > maxCount) {
+            if (count1 > maxCount) {
                 maxCount = count1;
                 mostFrequent = numbers7[i];
             }
