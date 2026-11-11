@@ -1,49 +1,56 @@
-package homeworks.brace_checker;
+package homeworks.braceChecker;
 
 public class BraceCheckerTest {
     public static void main(String[] args) {
 
         System.out.println();
         System.out.println("----------Test1----------");
-        BraceChecker braceChecker = new BraceChecker();
-        System.out.print(braceChecker.check("Hello from [Java]"));
+        BraceChecker test1 = new BraceChecker("Hello from [Java]");
+        test1.check();
 
         System.out.println();
         System.out.println("----------Test2----------");
-        System.out.print(braceChecker.check("{Hello (Java)}"));
+        BraceChecker test2 = new BraceChecker("{Hello (Java)}");
+        test2.check();
 
         System.out.println();
         System.out.println("----------Test3----------");
-        System.out.print(braceChecker.check("{[()]}"));
+        BraceChecker test3 = new BraceChecker("{[()]}");
+        test3.check();
 
         System.out.println();
         System.out.println("----------Test4----------");
-        System.out.print(braceChecker.check("Hello Java"));
+        BraceChecker test4 = new BraceChecker("Hello Java");
+        test4.check();
 
         System.out.println();
         System.out.println("----------Test5----------");
-        System.out.print(braceChecker.check("Hello from [Java)"));
+        BraceChecker test5 = new BraceChecker("Hello from [Java)");
+        test5.check();
 
         System.out.println();
         System.out.println("----------Test6----------");
-        System.out.print(braceChecker.check("{[(])}"));
+        BraceChecker test6 = new BraceChecker("{[(])}");
+        test6.check();
 
         System.out.println();
         System.out.println("----------Test7----------");
-        System.out.print(braceChecker.check("Hello from Java]"));
+        BraceChecker test7 = new BraceChecker("Hello from Java]");
+        test7.check();
 
         System.out.println();
         System.out.println("----------Test8----------");
-        System.out.print(braceChecker.check("{Hello Java"));
+        BraceChecker test8 = new BraceChecker("{Hello Java");
+        test8.check();
 
         System.out.println();
         System.out.println("----------Test9----------");
-        System.out.print(braceChecker.check("((()))"));
+        BraceChecker test9 = new BraceChecker("((()))");
+        test9.check();
 
         System.out.println();
         System.out.println("----------Test10----------");
-        System.out.print(braceChecker.check("(()"));
-
-
+        BraceChecker test10 = new BraceChecker("(()");
+        test10.check();
     }
 }
