@@ -8,12 +8,21 @@ public class EmployeeStorage {
     Employee[] employees = new Employee[10];
 
     public void addEmployee(Employee employee) {
-
+        boolean found = false;
         if (length == employees.length) {
             extend();
         }
+        for (int i = 0; i < length; i++) {
+            if (Objects.equals(employee.getEmployeeID(), employees[i].getEmployeeID())) {
+                System.out.println("Employee with ID " + employee.getEmployeeID() + " already exists. \n");
+                found = true;
+            }
+        }
 
-        employees[length++] = employee;
+        if(!found) {
+            employees[length++] = employee;
+            System.out.println("... Employee added ... \n");
+        }
     }
 
     private void extend() {
@@ -41,7 +50,45 @@ public class EmployeeStorage {
         }
 
         if (!found) {
-            System.out.println("Employee not found!" + "\n");
+            System.out.println("Employee not found! \n");
+        }
+    }
+
+    public void searchBySalary(String salary) {
+        boolean found = false;
+
+        for (int i = 0; i < length; i++) {
+            if (Objects.equals(salary, employees[i].getSalary())) {
+                System.out.println(employees[i]);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Employee not found! \n");
+        }
+    }
+
+    public void deleteEmployeeByID(String id) {
+        boolean found = false;
+
+        for (int i = 0; i < length; i++) {
+            if (Objects.equals(id, employees[i].getEmployeeID())) {
+
+                for (int j = i; j < length - 1; j++) {
+                    employees[j] = employees[j + 1];
+                }
+
+                employees[--length] = null;
+                found = true;
+
+                System.out.println("Employee deleted!\n");
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Employee not found!\n");
         }
     }
 
@@ -56,7 +103,7 @@ public class EmployeeStorage {
         }
 
         if (!found) {
-            System.out.println("Employee not found!" + "\n");
+            System.out.println("Employee not found! \n");
         }
     }
 

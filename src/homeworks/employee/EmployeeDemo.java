@@ -11,6 +11,8 @@ public class EmployeeDemo {
     private static final String PRINT_ALL_EMPLOYEES = "2";
     private static final String SEARCH_EMPLOYEE_BY_ID = "3";
     private static final String SEARCH_EMPLOYEE_BY_COMPANY = "4";
+    private static final String SEARCH_EMPLOYEE_BY_SALARY = "5";
+    private static final String DELETE_EMPLOYEE_BY_ID = "6";
 
     private static void printCommands() {
         System.out.println("Please input " + EXIT + " for EXIT");
@@ -18,6 +20,8 @@ public class EmployeeDemo {
         System.out.println("Please input " + PRINT_ALL_EMPLOYEES + " for print all Employees");
         System.out.println("Please input " + SEARCH_EMPLOYEE_BY_ID + " for search Employee by id");
         System.out.println("Please input " + SEARCH_EMPLOYEE_BY_COMPANY + " for search Employee by Company");
+        System.out.println("Please input " + SEARCH_EMPLOYEE_BY_SALARY + " for search Employee by Salary");
+        System.out.println("Please input " + DELETE_EMPLOYEE_BY_ID + " for delete Employee by id");
     }
 
     private static void searchEmployeeByCompany() {
@@ -26,16 +30,33 @@ public class EmployeeDemo {
         employeeStorage.searchByCompany(course);
     }
 
-    private static void searchEmployeeBYID() {
+    private static void searchEmployeeByID() {
         System.out.println("Please input ID");
         String keyword = scanner.nextLine();
         employeeStorage.searchByID(keyword);
+    }
+
+    private static void searchEmployeeBySalary() {
+        System.out.println("Please input Salary");
+        String keyword = scanner.nextLine();
+        employeeStorage.searchBySalary(keyword);
+    }
+
+    private static void deleteEmployeeById() {
+        System.out.println("Please input ID");
+        String keyword = scanner.nextLine();
+        employeeStorage.deleteEmployeeByID(keyword);
     }
 
     private static void addEmployee() {
         System.out.println("Please input name,surname,employeeID,salary,company,position");
         String employeeDataStr = scanner.nextLine();
         String[] employeeDataArr = employeeDataStr.split(",");
+
+        if (employeeDataArr.length != 6) {
+            System.out.println("Invalid data! Please enter exactly 6 values.\n");
+            return;
+        }
 
         Employee employee = new Employee(
                 employeeDataArr[0],
@@ -47,8 +68,6 @@ public class EmployeeDemo {
         );
 
         employeeStorage.addEmployee(employee);
-        System.out.println("Employee added!!!" + "\n");
-
     }
 
 
@@ -70,13 +89,19 @@ public class EmployeeDemo {
                     employeeStorage.print();
                     break;
                 case SEARCH_EMPLOYEE_BY_ID:
-                    searchEmployeeBYID();
+                    searchEmployeeByID();
                     break;
                 case SEARCH_EMPLOYEE_BY_COMPANY:
                     searchEmployeeByCompany();
                     break;
+                case SEARCH_EMPLOYEE_BY_SALARY:
+                    searchEmployeeBySalary();
+                    break;
+                case DELETE_EMPLOYEE_BY_ID:
+                    deleteEmployeeById();
+                    break;
                 default:
-                    System.out.println("command not found!");
+                    System.out.println("Invalid command. Please try again. \n");
 
             }
         }

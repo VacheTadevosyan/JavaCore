@@ -3,7 +3,6 @@ package homeworks.employee;
 import java.util.Objects;
 
 public class Employee {
-
     private String name;
     private String surname;
     private String employeeID;
@@ -86,13 +85,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", employeeID='" + employeeID + '\'' +
-                ", salary=" + salary +
-                ", company='" + company + '\'' +
-                ", position='" + position + '\'' +
-                '}' + "\n";
+        return "Name: " + name + "\n" +
+                "Surname: " + surname + "\n" +
+                "Employee ID: " + employeeID + "\n" +
+                "Salary: " + salary + "\n" +
+                "Company: " + company + "\n" +
+                "Position: " + position + "\n";
     }
 }
