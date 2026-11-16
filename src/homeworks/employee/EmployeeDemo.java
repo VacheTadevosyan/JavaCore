@@ -39,7 +39,7 @@ public class EmployeeDemo {
     private static void searchEmployeeBySalary() {
         System.out.println("Please input Salary");
         String keyword = scanner.nextLine();
-        employeeStorage.searchBySalary(keyword);
+        employeeStorage.searchBySalary(Double.parseDouble(keyword));
     }
 
     private static void deleteEmployeeById() {
@@ -48,27 +48,39 @@ public class EmployeeDemo {
         employeeStorage.deleteEmployeeByID(keyword);
     }
 
-    private static void addEmployee() {
-        System.out.println("Please input name,surname,employeeID,salary,company,position");
-        String employeeDataStr = scanner.nextLine();
-        String[] employeeDataArr = employeeDataStr.split(",");
 
-        if (employeeDataArr.length != 6) {
-            System.out.println("Invalid data! Please enter exactly 6 values.\n");
-            return;
-        }
+    private static void addEmployee() {
+
+        System.out.println("Please input name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Please input surname:");
+        String surname = scanner.nextLine();
+
+        System.out.println("Please input employee ID:");
+        String employeeID = scanner.nextLine();
+
+        System.out.println("Please input salary:");
+        double salary = Double.parseDouble(scanner.nextLine());
+
+        System.out.println("Please input company:");
+        String company = scanner.nextLine();
+
+        System.out.println("Please input position:");
+        String position = scanner.nextLine();
 
         Employee employee = new Employee(
-                employeeDataArr[0],
-                employeeDataArr[1],
-                employeeDataArr[2],
-                employeeDataArr[3],
-                employeeDataArr[4],
-                employeeDataArr[5]
+                name,
+                surname,
+                employeeID,
+                salary,
+                company,
+                position
         );
 
         employeeStorage.addEmployee(employee);
     }
+
 
 
     public static void main(String[] args) {
@@ -80,6 +92,7 @@ public class EmployeeDemo {
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:
+                    System.out.println("Program finished.");
                     isRun = false;
                     break;
                 case ADD_EMPLOYEE:

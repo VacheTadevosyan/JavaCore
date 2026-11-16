@@ -5,23 +5,26 @@ import java.util.Objects;
 public class EmployeeStorage {
 
     private int length = 0;
-    Employee[] employees = new Employee[10];
+    private Employee[] employees = new Employee[10];
 
     public void addEmployee(Employee employee) {
         boolean found = false;
-        if (length == employees.length) {
-            extend();
-        }
+
         for (int i = 0; i < length; i++) {
             if (Objects.equals(employee.getEmployeeID(), employees[i].getEmployeeID())) {
-                System.out.println("Employee with ID " + employee.getEmployeeID() + " already exists. \n");
+                System.out.println("Employee with ID " + employee.getEmployeeID() + " already exists.\n");
                 found = true;
+                break;
             }
         }
 
-        if(!found) {
+        if (!found) {
+            if (length == employees.length) {
+                extend();
+            }
+
             employees[length++] = employee;
-            System.out.println("... Employee added ... \n");
+            System.out.println("... Employee added ...\n");
         }
     }
 
@@ -34,6 +37,11 @@ public class EmployeeStorage {
     }
 
     public void print() {
+        if (length == 0) {
+            System.out.println("Employee list is empty!\n");
+            return;
+        }
+
         for (int i = 0; i < length; i++) {
             System.out.println(employees[i]);
         }
@@ -54,18 +62,18 @@ public class EmployeeStorage {
         }
     }
 
-    public void searchBySalary(String salary) {
+    public void searchBySalary(double salary) {
         boolean found = false;
 
         for (int i = 0; i < length; i++) {
-            if (Objects.equals(salary, employees[i].getSalary())) {
+            if (employees[i].getSalary() >= salary) {
                 System.out.println(employees[i]);
                 found = true;
             }
         }
 
         if (!found) {
-            System.out.println("Employee not found! \n");
+            System.out.println("Employee not found!");
         }
     }
 
